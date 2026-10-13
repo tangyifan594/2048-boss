@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://dq2krgdoewtnl"]
+
+[ext_resource type="Script" uid="uid://0sciihqhwbjc" path="res://script/archer_tile_value.gd" id="1_3803x"]
+[ext_resource type="Texture2D" uid="uid://dwddndpwtg62g" path="res://texture/Soldier_Attack03.png" id="2_ox5nn"]
+[ext_resource type="Texture2D" uid="uid://bxva2hxiipbts" path="res://Soldier-Idle.png" id="2_ryspc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3803x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9389409, 0.7906721, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o6vk"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g2i0"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oexl8"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmcug"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbqml"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i54n"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdyjf"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owk0k"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw85a"]
+atlas = ExtResource("2_ox5nn")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud8mv"]
+atlas = ExtResource("2_ryspc")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uokq"]
+atlas = ExtResource("2_ryspc")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmiqc"]
+atlas = ExtResource("2_ryspc")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tufsk"]
+atlas = ExtResource("2_ryspc")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b00hj"]
+atlas = ExtResource("2_ryspc")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pina"]
+atlas = ExtResource("2_ryspc")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mol8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o6vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g2i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oexl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmcug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbqml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i54n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdyjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owk0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw85a")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud8mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uokq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmiqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tufsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b00hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pina")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="ArcherTile" type="Control" unique_id=1883900674]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_3803x")
+
+[node name="SelectionBorder" type="Panel" parent="." unique_id=1284284283]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3803x")
+
+[node name="ArcherSprite2" type="AnimatedSprite2D" parent="." unique_id=1724364812]
+position = Vector2(50, 50)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mol8o")
+animation = &"attack"
+autoplay = "idle"
+frame = 8
+frame_progress = 1.0
+
+[node name="ValueLabel" type="Label" parent="." unique_id=702443284]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 58.0
+offset_bottom = 30.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "2"

@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://dms3qtgo1c8ux"]
+
+[ext_resource type="Script" uid="uid://mnmrcqkppypv" path="res://script/orc.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://de1rijv81kvco" path="res://texture/Orc_Death.png" id="2_gd0gx"]
+[ext_resource type="Texture2D" uid="uid://c1h67ijwe5c4k" path="res://texture/Orc_Walk.png" id="2_orc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff8d0"]
+atlas = ExtResource("2_gd0gx")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lr4i"]
+atlas = ExtResource("2_gd0gx")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv07b"]
+atlas = ExtResource("2_gd0gx")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5of50"]
+atlas = ExtResource("2_gd0gx")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0"]
+atlas = ExtResource("2_orc")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1"]
+atlas = ExtResource("2_orc")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2"]
+atlas = ExtResource("2_orc")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3"]
+atlas = ExtResource("2_orc")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4"]
+atlas = ExtResource("2_orc")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5"]
+atlas = ExtResource("2_orc")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6"]
+atlas = ExtResource("2_orc")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7"]
+atlas = ExtResource("2_orc")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_walk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff8d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lr4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv07b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5of50")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape_orc"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_health_background"]
+bg_color = Color(0.10, 0.08, 0.07, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.02, 0.02, 0.02, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_health_fill"]
+bg_color = Color(0.30, 0.82, 0.22, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="Orc" type="CharacterBody2D" unique_id=1451669604]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1412282938]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_walk")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008639365]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape_orc")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 10
+offset_left = -29.0
+offset_top = -53.0
+offset_right = 29.0
+offset_bottom = -45.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBox_health_background")
+theme_override_styles/fill = SubResource("StyleBox_health_fill")
+max_value = 5.0
+value = 5.0
+show_percentage = false

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cxupn66m518f5"]
+
+[ext_resource type="Script" uid="uid://cruhrepw4iqlf" path="res://script/board_2048.gd" id="1_akd46"]
+[ext_resource type="Texture2D" uid="uid://u1ux6odd6npy" path="res://texture/merge_board_4x4.png" id="1_qm08r"]
+[ext_resource type="AudioStream" uid="uid://dwu4p6vlk2p8g" path="res://audio/ui_slider_tick_clear_v01.ogg" id="3_slide"]
+
+[node name="Board2048" type="Control" unique_id=186019630]
+custom_minimum_size = Vector2(552, 552)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 552.0
+offset_bottom = 552.0
+script = ExtResource("1_akd46")
+
+[node name="BoardTexture" type="TextureRect" parent="." unique_id=977436159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_qm08r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TileLayer" type="Control" parent="." unique_id=1031807831]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="." unique_id=1699243941]
+stream = ExtResource("3_slide")

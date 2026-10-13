@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://d23h84wahs10s"]
+
+[ext_resource type="PackedScene" uid="uid://cxupn66m518f5" path="res://scene/Board2048.tscn" id="1_board"]
+[ext_resource type="Texture2D" uid="uid://dyatrd1ygmsgx" path="res://texture/grass_background_1280x720.png" id="2_grass"]
+[ext_resource type="PackedScene" uid="uid://ixbq5hf0dlja" path="res://scene/ItemToolbar.tscn" id="3_toolbar"]
+[ext_resource type="Script" uid="uid://bhc2esurkbpve" path="res://script/main.gd" id="4_main"]
+[ext_resource type="PackedScene" path="res://scene/CoinDisplay.tscn" id="5_coin_display"]
+[ext_resource type="PackedScene" uid="uid://jd1oq6kdndce" path="res://scene/DeploymentPlatform.tscn" id="6_platform"]
+[ext_resource type="Texture2D" uid="uid://dtfieo7cxd5br" path="res://texture/battle_road.png" id="7_road"]
+[ext_resource type="PackedScene" path="res://scene/BattleHUD.tscn" id="8_battle_hud"]
+[ext_resource type="Script" uid="uid://bmbc0but3bykx" path="res://script/wave_controller.gd" id="9_wave_controller"]
+[ext_resource type="Texture2D" uid="uid://dabjbuuc56e5a" path="res://texture/coin.png" id="10_coin"]
+[ext_resource type="StyleBox" path="res://scene/TopUIPanelStyle.tres" id="11_top_panel"]
+[ext_resource type="AudioStream" path="res://audio/Pixel 4.mp3" id="12_music"]
+[ext_resource type="AudioStream" path="res://audio/ui_achievement_clear_v01.ogg" id="13_wave_clear"]
+[ext_resource type="AudioStream" path="res://audio/01_Coin Pickup_v1.ogg" id="14_coin_pickup"]
+[ext_resource type="AudioStream" path="res://audio/01_Game Over_v1.ogg" id="15_game_over"]
+[ext_resource type="AudioStream" path="res://audio/01_Gunshot_v1.ogg" id="16_base_hit"]
+
+[node name="Main" type="Node2D" unique_id=711419276]
+script = ExtResource("4_main")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("12_music")
+volume_db = -14.0
+autoplay = true
+
+[node name="WaveClearSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("13_wave_clear")
+volume_db = -3.0
+
+[node name="CoinPickupSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("14_coin_pickup")
+volume_db = -5.0
+max_polyphony = 4
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("15_game_over")
+volume_db = -2.0
+
+[node name="BaseHitSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("16_base_hit")
+volume_db = -9.0
+max_polyphony = 2
+
+[node name="World" type="Node2D" parent="." unique_id=19596850]
+
+[node name="BattleRoad" type="Sprite2D" parent="World" unique_id=1084871683]
+position = Vector2(314, 372)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_road")
+
+[node name="MonsterLayer" type="Node2D" parent="World" unique_id=2096831813]
+
+[node name="ProjectileLayer" type="Node2D" parent="World" unique_id=1213336357]
+
+[node name="WaveController" type="Node" parent="World" unique_id=998874112]
+script = ExtResource("9_wave_controller")
+
+[node name="SpawnTimer" type="Timer" parent="World/WaveController" unique_id=561993126]
+
+[node name="AttackTimer" type="Timer" parent="World/WaveController" unique_id=2072581213]
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=597770053]
+layer = -10
+
+[node name="GrassBackground" type="TextureRect" parent="Background" unique_id=2138117751]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_grass")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=126113219]
+
+[node name="ScreenUI" type="Control" parent="UI" unique_id=328967217]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Board2048" parent="UI/ScreenUI" unique_id=1634312452 instance=ExtResource("1_board")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -473.99994
+offset_top = 86.00001
+offset_right = 78.0
+offset_bottom = 638.0
+grow_horizontal = 0
+scale = Vector2(0.8, 0.8)
+
+[node name="CoinDisplay" parent="UI/ScreenUI" unique_id=1179169019 instance=ExtResource("5_coin_display")]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 17.0
+offset_right = 182.0
+offset_bottom = 75.0
+
+[node name="DeploymentPlatform" parent="UI/ScreenUI" unique_id=1987572893 instance=ExtResource("6_platform")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -690.0
+offset_top = 82.0
+offset_right = -500.0
+offset_bottom = 662.0
+grow_horizontal = 0
+
+[node name="SlideCost" type="Panel" parent="UI/ScreenUI" unique_id=751355284]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -468.0
+offset_top = 16.0
+offset_right = -220.0
+offset_bottom = 76.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("11_top_panel")
+
+[node name="Content" type="HBoxContainer" parent="UI/ScreenUI/SlideCost" unique_id=817094707]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="UI/ScreenUI/SlideCost/Content" unique_id=742135199]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.92, 0.86, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.06, 0.04, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "SWIPE COST"
+vertical_alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="UI/ScreenUI/SlideCost/Content" unique_id=116994621]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("10_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CostLabel" type="Label" parent="UI/ScreenUI/SlideCost/Content" unique_id=2094482898]
+custom_minimum_size = Vector2(28, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.06, 0.04, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "10"
+vertical_alignment = 1
+
+[node name="BattleHUD" parent="UI/ScreenUI" unique_id=1617879052 instance=ExtResource("8_battle_hud")]
+layout_mode = 1
+
+[node name="ItemToolbar" parent="UI/ScreenUI" unique_id=1184309987 instance=ExtResource("3_toolbar")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -472.0
+offset_top = 530.0
+offset_right = -32.0
+offset_bottom = 704.0
+grow_horizontal = 0

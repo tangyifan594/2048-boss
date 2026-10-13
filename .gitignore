@@ -1,3 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Local test runs and editor state
+.godot-test-appdata/

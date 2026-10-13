@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://checyppo314xo"]
+
+[ext_resource type="Script" path="res://script/battle_archer.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://de27d3m6b080t" path="res://texture/Soldier-Idle.png" id="2_idle"]
+[ext_resource type="Texture2D" uid="uid://dwddndpwtg62g" path="res://texture/Soldier_Attack03.png" id="3_attack"]
+
+[sub_resource type="AtlasTexture" id="Attack_0"]
+atlas = ExtResource("3_attack")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_1"]
+atlas = ExtResource("3_attack")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_2"]
+atlas = ExtResource("3_attack")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_3"]
+atlas = ExtResource("3_attack")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_4"]
+atlas = ExtResource("3_attack")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_5"]
+atlas = ExtResource("3_attack")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_6"]
+atlas = ExtResource("3_attack")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_7"]
+atlas = ExtResource("3_attack")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Attack_8"]
+atlas = ExtResource("3_attack")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Idle_0"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Idle_1"]
+atlas = ExtResource("2_idle")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Idle_2"]
+atlas = ExtResource("2_idle")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Idle_3"]
+atlas = ExtResource("2_idle")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Idle_4"]
+atlas = ExtResource("2_idle")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="Idle_5"]
+atlas = ExtResource("2_idle")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_archer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Attack_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("Attack_8")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 18.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Idle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Idle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Idle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Idle_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Idle_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Idle_5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="BattleArcher" type="Node2D" unique_id=190431336]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2057843445]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_archer")
+animation = &"attack"
+autoplay = "idle"
+flip_h = true
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=731504966]
+position = Vector2(-28, -2)

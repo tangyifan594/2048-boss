@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://script/coin_display.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://texture/coin.png" id="2_coin"]
+[ext_resource type="AudioStream" path="res://audio/ui_error_clear_v01.ogg" id="3_error"]
+[ext_resource type="StyleBox" path="res://scene/TopUIPanelStyle.tres" id="4_top_panel"]
+
+[node name="CoinDisplay" type="Control"]
+custom_minimum_size = Vector2(166, 58)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 166.0
+offset_bottom = 58.0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_top_panel")
+
+[node name="Content" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = -12.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="Background/Content"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AmountLabel" type="Label" parent="Background/Content"]
+custom_minimum_size = Vector2(82, 40)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.90, 0.45, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.07, 0.04, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 26
+text = "100"
+vertical_alignment = 1
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_error")
