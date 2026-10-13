@@ -16,6 +16,9 @@
 [ext_resource type="AudioStream" path="res://audio/01_Coin Pickup_v1.ogg" id="14_coin_pickup"]
 [ext_resource type="AudioStream" path="res://audio/01_Game Over_v1.ogg" id="15_game_over"]
 [ext_resource type="AudioStream" path="res://audio/01_Gunshot_v1.ogg" id="16_base_hit"]
+[ext_resource type="Texture2D" uid="uid://dcovt5dwhh4ld" path="res://texture/grass.png" id="17_decor_grass"]
+[ext_resource type="Texture2D" uid="uid://cvx3h7600v3bo" path="res://texture/colum (1).png" id="18_broken_column"]
+[ext_resource type="Texture2D" uid="uid://danf7tpqof06w" path="res://texture/colum (2).png" id="19_standing_column"]
 
 [node name="Main" type="Node2D" unique_id=711419276]
 script = ExtResource("4_main")
@@ -49,6 +52,30 @@ volume_db = -9.0
 max_polyphony = 2
 
 [node name="World" type="Node2D" parent="." unique_id=19596850]
+
+[node name="EnvironmentDecor" type="Node2D" parent="World"]
+z_index = -2
+
+[node name="GrassUpperLeft" type="Sprite2D" parent="World/EnvironmentDecor"]
+position = Vector2(92, 205)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("17_decor_grass")
+
+[node name="GrassLowerRight" type="Sprite2D" parent="World/EnvironmentDecor"]
+position = Vector2(505, 595)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("17_decor_grass")
+flip_h = true
+
+[node name="BrokenColumn" type="Sprite2D" parent="World/EnvironmentDecor"]
+position = Vector2(115, 570)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("18_broken_column")
+
+[node name="StandingColumn" type="Sprite2D" parent="World/EnvironmentDecor"]
+position = Vector2(520, 215)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("19_standing_column")
 
 [node name="BattleRoad" type="Sprite2D" parent="World" unique_id=1084871683]
 position = Vector2(314, 372)
