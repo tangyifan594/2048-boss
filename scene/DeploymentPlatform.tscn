@@ -5,23 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://c7yog8c3bcbox" path="res://texture/auto_deployment_frame.png" id="3_auto_frame"]
 [ext_resource type="Texture2D" uid="uid://btnni1vmnf43a" path="res://texture/lock.png" id="4_lock"]
 [ext_resource type="Texture2D" uid="uid://dabjbuuc56e5a" path="res://texture/coin.png" id="5_coin"]
+[ext_resource type="Texture2D" uid="uid://buk5n08qlwi43" path="res://texture/platform_single.png" id="6_single_platform"]
 
 [node name="DeploymentPlatform" type="Control" unique_id=1809376051]
-custom_minimum_size = Vector2(190, 580)
+custom_minimum_size = Vector2(530, 580)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 190.0
+offset_right = 530.0
 offset_bottom = 580.0
 mouse_filter = 1
 script = ExtResource("2_script")
 
 [node name="PlatformTexture" type="TextureRect" parent="." unique_id=998791203]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 340.0
+offset_right = 530.0
+offset_bottom = 580.0
 mouse_filter = 2
 texture = ExtResource("1_platform")
 expand_mode = 1
@@ -29,9 +28,9 @@ stretch_mode = 5
 
 [node name="AutoDeployButton" type="Button" parent="." unique_id=1972163502]
 layout_mode = 0
-offset_left = 44.0
+offset_left = 384.0
 offset_top = 78.0
-offset_right = 134.0
+offset_right = 474.0
 offset_bottom = 122.0
 tooltip_text = "Deploy Highest-Level Heroes"
 focus_mode = 0
@@ -73,33 +72,33 @@ vertical_alignment = 1
 
 [node name="Slot1" type="Control" parent="." unique_id=534013535]
 anchors_preset = 0
-offset_left = 44.0
+offset_left = 384.0
 offset_top = 133.0
-offset_right = 134.0
+offset_right = 474.0
 offset_bottom = 223.0
 mouse_filter = 2
 
 [node name="Slot2" type="Control" parent="." unique_id=808720317]
 anchors_preset = 0
-offset_left = 44.0
+offset_left = 384.0
 offset_top = 270.0
-offset_right = 134.0
+offset_right = 474.0
 offset_bottom = 360.0
 mouse_filter = 2
 
 [node name="Slot3" type="Control" parent="." unique_id=1241939847]
 anchors_preset = 0
-offset_left = 44.0
+offset_left = 384.0
 offset_top = 406.0
-offset_right = 134.0
+offset_right = 474.0
 offset_bottom = 496.0
 mouse_filter = 2
 
 [node name="Slot2UnlockButton" type="Button" parent="." unique_id=1533932636]
 layout_mode = 0
-offset_left = 44.0
+offset_left = 384.0
 offset_top = 270.0
-offset_right = 134.0
+offset_right = 474.0
 offset_bottom = 360.0
 tooltip_text = "Unlock Deployment Slot"
 focus_mode = 0
@@ -146,9 +145,9 @@ vertical_alignment = 1
 
 [node name="Slot3UnlockButton" type="Button" parent="." unique_id=1588554372]
 layout_mode = 0
-offset_left = 44.0
+offset_left = 384.0
 offset_top = 406.0
-offset_right = 134.0
+offset_right = 474.0
 offset_bottom = 496.0
 tooltip_text = "Unlock Deployment Slot"
 focus_mode = 0
@@ -191,4 +190,72 @@ theme_override_colors/font_outline_color = Color(0.08, 0.06, 0.04, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 15
 text = "50"
+vertical_alignment = 1
+
+[node name="RemotePlatformTexture" type="TextureRect" parent="." unique_id=502255466]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 90.0
+offset_right = 195.0
+offset_bottom = 280.0
+mouse_filter = 2
+texture = ExtResource("6_single_platform")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="Control" parent="." unique_id=447482740]
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 140.0
+offset_right = 145.0
+offset_bottom = 230.0
+mouse_filter = 2
+
+[node name="Slot4UnlockButton" type="Button" parent="." unique_id=1045856624]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 140.0
+offset_right = 145.0
+offset_bottom = 230.0
+tooltip_text = "Unlock Deployment Slot"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="LockIcon" type="TextureRect" parent="Slot4UnlockButton" unique_id=886909589]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 62.0
+mouse_filter = 2
+texture = ExtResource("4_lock")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Price" type="HBoxContainer" parent="Slot4UnlockButton" unique_id=2062566808]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 59.0
+offset_right = 83.0
+offset_bottom = 84.0
+mouse_filter = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="Slot4UnlockButton/Price" unique_id=879888586]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CostLabel" type="Label" parent="Slot4UnlockButton/Price" unique_id=106657612]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.06, 0.04, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 15
+text = "100"
 vertical_alignment = 1

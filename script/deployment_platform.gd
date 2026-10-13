@@ -21,22 +21,23 @@ const BATTLE_ARCHER_SCENE := preload("res://scene/BattleArcher.tscn")
 
 # ==================== 节点与数据 ====================
 
-@onready var slots: Array[Control] = [$Slot1, $Slot2, $Slot3]
+@onready var slots: Array[Control] = [$Slot1, $Slot2, $Slot3, $Slot4]
 @onready var auto_deploy_button: Button = $AutoDeployButton
 @onready var slot_2_unlock_button: Button = $Slot2UnlockButton
 @onready var slot_3_unlock_button: Button = $Slot3UnlockButton
+@onready var slot_4_unlock_button: Button = $Slot4UnlockButton
 
-# 三个槽位的解锁价格；第一格开局免费。
-@export var slot_unlock_costs: Array[int] = [0, 20, 50]
+# 四个槽位的解锁价格；第一格开局免费，第四格位于道路中段上方。
+@export var slot_unlock_costs: Array[int] = [0, 20, 50, 100]
 
 var deployed_tiles: Array[ArcherTile] = []
 var deployed_archers: Array[BattleArcher] = []
-var unlocked_slots: Array[bool] = [true, false, false]
+var unlocked_slots: Array[bool] = [true, false, false, false]
 
 
 # ==================== 初始化 ====================
 
-# 功能：建立三个空的出战槽位数据。
+# 功能：建立四个空的出战槽位数据。
 func _ready() -> void:
 	deployed_tiles.resize(slots.size())
 	deployed_tiles.fill(null)
@@ -45,6 +46,7 @@ func _ready() -> void:
 	auto_deploy_button.pressed.connect(_on_auto_deploy_button_pressed)
 	slot_2_unlock_button.pressed.connect(_on_unlock_button_pressed.bind(1))
 	slot_3_unlock_button.pressed.connect(_on_unlock_button_pressed.bind(2))
+	slot_4_unlock_button.pressed.connect(_on_unlock_button_pressed.bind(3))
 	refresh_unlock_buttons()
 
 
@@ -89,10 +91,13 @@ func is_slot_unlocked(slot_index: int) -> bool:
 func refresh_unlock_buttons() -> void:
 	slot_2_unlock_button.visible = not is_slot_unlocked(1)
 	slot_3_unlock_button.visible = not is_slot_unlocked(2)
+	slot_4_unlock_button.visible = not is_slot_unlocked(3)
 	var slot_2_cost_label := $Slot2UnlockButton/Price/CostLabel as Label
 	var slot_3_cost_label := $Slot3UnlockButton/Price/CostLabel as Label
+	var slot_4_cost_label := $Slot4UnlockButton/Price/CostLabel as Label
 	slot_2_cost_label.text = str(slot_unlock_costs[1])
 	slot_3_cost_label.text = str(slot_unlock_costs[2])
+	slot_4_cost_label.text = str(slot_unlock_costs[3])
 
 
 # ==================== 接收棋盘拖动 ====================
@@ -186,6 +191,7 @@ func set_deployment_locked(is_locked: bool) -> void:
 	auto_deploy_button.disabled = is_locked
 	slot_2_unlock_button.disabled = is_locked
 	slot_3_unlock_button.disabled = is_locked
+	slot_4_unlock_button.disabled = is_locked
 	auto_deploy_button.modulate = (
 		Color(0.55, 0.55, 0.55, 0.85) if is_locked else Color.WHITE
 	)
